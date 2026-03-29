@@ -20,6 +20,9 @@
 # production
 /build
 
+# solidity build output
+/ethereum/build
+
 # misc
 .DS_Store
 *.pem
