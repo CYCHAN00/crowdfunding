@@ -1,51 +1,12 @@
-import web3 from "@/lib/web3";
-import factory from "@/lib/factory";
-import getCampaign from "@/lib/campaign";
+import { getAllCampaigns, type CampaignSummary } from "@/app/actions";
 import CampaignList from "@/components/CampaignList";
-
-export interface CampaignSummary {
-  address: string;
-  manager: string;
-  minimumContribution: string;
-  balance: string;
-  approversCount: string;
-}
-
-async function getCampaigns(): Promise<CampaignSummary[]> {
-  const addresses = (await factory.methods
-    .getDeployedCrowdfunding()
-    .call()) as string[];
-
-  const campaigns = await Promise.all(
-    addresses.map(async (address) => {
-      const campaign = getCampaign(address);
-      const [manager, minimumContribution, approversCount, balance] =
-        await Promise.all([
-          campaign.methods.manager().call() as Promise<string>,
-          campaign.methods.minimumContribution().call() as Promise<bigint>,
-          campaign.methods.approversCount().call() as Promise<bigint>,
-          web3.eth.getBalance(address),
-        ]);
-
-      return {
-        address,
-        manager: manager,
-        minimumContribution: minimumContribution.toString(),
-        balance: web3.utils.fromWei(balance, "ether"),
-        approversCount: approversCount.toString(),
-      };
-    }),
-  );
-
-  return campaigns;
-}
 
 export default async function ExplorePage() {
   let campaigns: CampaignSummary[] = [];
   let error: string | null = null;
 
   try {
-    campaigns = await getCampaigns();
+    campaigns = await getAllCampaigns();
   } catch (e) {
     error = e instanceof Error ? e.message : "Failed to load campaigns";
   }

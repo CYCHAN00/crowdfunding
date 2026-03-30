@@ -44,3 +44,7 @@ yarn-error.log*
 next-env.d.ts
 
 _ADDRESS
+
+# seed scripts (contain hardcoded addresses, for local dev only)
+/ethereum/seed.js
+/ethereum/seed-requests.js
