@@ -31,12 +31,16 @@ export default function CallToAction() {
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row">
-          <Button size="lg" className="h-12 px-8 text-base">
-            Start Your Campaign
-          </Button>
-          <Button variant="outline" size="lg" className="h-12 px-8 text-base">
-            Browse Projects
-          </Button>
+          <a href="/my-projects">
+            <Button size="lg" className="h-12 px-8 text-base">
+              Start Your Campaign
+            </Button>
+          </a>
+          <a href="/explore">
+            <Button variant="outline" size="lg" className="h-12 px-8 text-base">
+              Browse Projects
+            </Button>
+          </a>
         </div>
       </div>
     </section>

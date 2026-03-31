@@ -11,21 +11,6 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="flex gap-8 text-sm text-muted-foreground">
-          <a href="#" className="transition-colors hover:text-foreground">
-            Documentation
-          </a>
-          <a href="#" className="transition-colors hover:text-foreground">
-            GitHub
-          </a>
-          <a href="#" className="transition-colors hover:text-foreground">
-            Twitter
-          </a>
-          <a href="#" className="transition-colors hover:text-foreground">
-            Discord
-          </a>
-        </div>
-
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} CrowdCrypto. All rights reserved.
         </p>

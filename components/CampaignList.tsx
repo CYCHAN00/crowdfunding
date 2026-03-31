@@ -64,9 +64,9 @@ export default function CampaignList({
         const ended = deadlineLabel === "Ended";
 
         return (
+          <a key={campaign.address} href={`/campaigns/${campaign.address}`} className="block">
           <Card
-            key={campaign.address}
-            className="group relative flex flex-col border-0 bg-card/60 pt-0 backdrop-blur-sm transition-all hover:bg-card/80 hover:ring-primary/30"
+            className="group relative flex flex-col border-0 bg-card/60 pt-0 backdrop-blur-sm transition-all hover:bg-card/80 hover:ring-1 hover:ring-primary/30 cursor-pointer"
           >
             <CampaignCover src={campaign.imageUrl} title={campaign.title} />
 
@@ -116,13 +116,9 @@ export default function CampaignList({
                 </div>
               </div>
 
-              <a href={`/campaigns/${campaign.address}`}>
-                <Button variant="outline" className="w-full">
-                  View Campaign
-                </Button>
-              </a>
             </CardContent>
           </Card>
+          </a>
         );
       })}
     </div>
